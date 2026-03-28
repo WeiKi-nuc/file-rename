@@ -1,0 +1,36 @@
+{
+    "version": "1.0.0",
+    "description": "批量文件重命名工具测试场景配置",
+    "categories": {
+        "basic": {
+            "name": "基础场景",
+            "description": "测试基本功能",
+            "scenarios": [
+                "basic_prefix_suffix.json",
+                "basic_replace.json",
+                "basic_numbering.json"
+            ]
+        },
+        "boundary": {
+            "name": "边界场景",
+            "description": "测试边界条件和异常处理",
+            "scenarios": [
+                "boundary_empty_dir.json",
+                "boundary_no_match_ext.json",
+                "boundary_conflict.json",
+                "boundary_protected.json"
+            ]
+        },
+        "complex": {
+            "name": "复杂场景",
+            "description": "测试复杂组合和高级功能",
+            "scenarios": [
+                "complex_combined.json",
+                "complex_regex.json",
+                "complex_date.json",
+                "complex_special_chars.json"
+            ]
+        }
+    },
+    "total_scenarios": 11
+}

@@ -1,0 +1,16 @@
+{
+    "name": "边界场景 - 文件名冲突",
+    "description": "测试重命名后产生文件名冲突的情况",
+    "scenario_type": "boundary",
+    "test_files": [
+        "file_a.txt",
+        "file_b.txt"
+    ],
+    "rule": {
+        "replace": "file_,same_"
+    },
+    "expected_results": {
+        "has_conflicts": true,
+        "conflict_type": "duplicate_target"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "边界场景 - 空目录",
+    "description": "测试空目录的处理",
+    "scenario_type": "boundary",
+    "test_files": [],
+    "rule": {
+        "prefix": "test_"
+    },
+    "expected_results": {
+        "error_type": "no_files",
+        "message": "没有需要重命名的文件"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "基础场景 - 前缀后缀",
+    "description": "测试添加前缀和后缀的基本功能",
+    "scenario_type": "basic",
+    "test_files": [
+        "document.txt",
+        "photo.jpg",
+        "data.csv"
+    ],
+    "rule": {
+        "prefix": "test_",
+        "suffix": "_backup",
+        "number_start": 1,
+        "padding": 3
+    },
+    "expected_results": {
+        "document.txt": "001_test_document_backup.txt",
+        "photo.jpg": "002_test_photo_backup.jpg",
+        "data.csv": "003_test_data_backup.csv"
+    }
+}

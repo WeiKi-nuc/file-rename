@@ -1,0 +1,26 @@
+{
+  "test_id": "20260328_235759_568939",
+  "timestamp": "2026-03-28T23:57:59.568939",
+  "test_type": "e2e",
+  "success": true,
+  "duration_ms": 268.3289051055908,
+  "request": {
+    "scenario": "basic",
+    "test_files": [
+      "doc1.txt",
+      "doc2.txt",
+      "image.jpg"
+    ],
+    "rule": {
+      "prefix": "test_",
+      "suffix": "_backup"
+    }
+  },
+  "response": {
+    "total_duration_ms": 268.3289051055908,
+    "files_tested": 3,
+    "scenario": "basic",
+    "all_passed": true
+  },
+  "errors": []
+}

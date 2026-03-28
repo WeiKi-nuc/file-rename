@@ -1,0 +1,19 @@
+{
+    "name": "复杂场景 - 正则表达式替换",
+    "description": "测试正则表达式替换功能",
+    "scenario_type": "complex",
+    "test_files": [
+        "IMG_20250315_001.jpg",
+        "IMG_20250316_002.jpg",
+        "IMG_20250317_003.jpg"
+    ],
+    "rule": {
+        "regex": "IMG_(\\d{8})_,PHOTO_$1_",
+        "number_start": -1
+    },
+    "expected_results": {
+        "IMG_20250315_001.jpg": "PHOTO_20250315_001.jpg",
+        "IMG_20250316_002.jpg": "PHOTO_20250316_002.jpg",
+        "IMG_20250317_003.jpg": "PHOTO_20250317_003.jpg"
+    }
+}
