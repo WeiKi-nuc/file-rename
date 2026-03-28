@@ -1,0 +1,290 @@
+{
+  "description": "验证器测试场景 - 测试各种验证函数",
+  "test_cases": [
+    {
+      "category": "source_dir",
+      "description": "源目录验证测试",
+      "cases": [
+        {
+          "name": "有效目录",
+          "input": "./source_data/",
+          "expected": true
+        },
+        {
+          "name": "不存在的目录",
+          "input": "./nonexistent_dir/",
+          "expected": false
+        },
+        {
+          "name": "空字符串",
+          "input": "",
+          "expected": false
+        }
+      ]
+    },
+    {
+      "category": "output_dir",
+      "description": "输出目录验证测试",
+      "cases": [
+        {
+          "name": "有效目录",
+          "input": "./output_build/",
+          "expected": true
+        },
+        {
+          "name": "需要创建的目录",
+          "input": "./output_build/test_subdir/",
+          "expected": true
+        }
+      ]
+    },
+    {
+      "category": "extensions",
+      "description": "扩展名验证测试",
+      "cases": [
+        {
+          "name": "单扩展名",
+          "input": "txt",
+          "expected": [".txt"]
+        },
+        {
+          "name": "多扩展名",
+          "input": "jpg,png,gif",
+          "expected": [".jpg", ".png", ".gif"]
+        },
+        {
+          "name": "带点扩展名",
+          "input": ".txt,.pdf",
+          "expected": [".txt", ".pdf"]
+        },
+        {
+          "name": "带空格扩展名",
+          "input": "txt, pdf, jpg",
+          "expected": [".txt", ".pdf", ".jpg"]
+        },
+        {
+          "name": "空扩展名",
+          "input": null,
+          "expected": null
+        },
+        {
+          "name": "受保护扩展名",
+          "input": "cfg,txt",
+          "expected": [".txt"]
+        }
+      ]
+    },
+    {
+      "category": "date_format",
+      "description": "日期格式验证测试",
+      "cases": [
+        {
+          "name": "标准格式",
+          "input": "%Y%m%d",
+          "expected": true
+        },
+        {
+          "name": "带分隔符格式",
+          "input": "%Y-%m-%d",
+          "expected": true
+        },
+        {
+          "name": "完整时间格式",
+          "input": "%Y%m%d_%H%M%S",
+          "expected": true
+        },
+        {
+          "name": "无效格式",
+          "input": "%Q%W%E",
+          "expected": false
+        },
+        {
+          "name": "空格式",
+          "input": null,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "category": "regex",
+      "description": "正则表达式验证测试",
+      "cases": [
+        {
+          "name": "简单模式",
+          "input": "test\\d+",
+          "expected": true
+        },
+        {
+          "name": "分组模式",
+          "input": "(\\w+)_(\\d+)",
+          "expected": true
+        },
+        {
+          "name": "字符类",
+          "input": "[a-zA-Z]+",
+          "expected": true
+        },
+        {
+          "name": "无效正则",
+          "input": "[invalid(",
+          "expected": false
+        },
+        {
+          "name": "空正则",
+          "input": null,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "category": "replace",
+      "description": "替换字符串解析测试",
+      "cases": [
+        {
+          "name": "有效格式",
+          "input": "old,new",
+          "expected": ["old", "new"]
+        },
+        {
+          "name": "含逗号的值",
+          "input": "old,new,value",
+          "expected": ["old", "new,value"]
+        },
+        {
+          "name": "空字符串",
+          "input": null,
+          "expected": null
+        },
+        {
+          "name": "无逗号",
+          "input": "invalid",
+          "expected": false
+        }
+      ]
+    },
+    {
+      "category": "number_start",
+      "description": "序号起始值验证测试",
+      "cases": [
+        {
+          "name": "正整数",
+          "input": 10,
+          "expected": 10
+        },
+        {
+          "name": "字符串数字",
+          "input": "5",
+          "expected": 5
+        },
+        {
+          "name": "负数",
+          "input": -5,
+          "expected": 1
+        },
+        {
+          "name": "无效值",
+          "input": "abc",
+          "expected": 1
+        },
+        {
+          "name": "空值",
+          "input": null,
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "category": "padding",
+      "description": "补零位数验证测试",
+      "cases": [
+        {
+          "name": "正常值",
+          "input": 3,
+          "expected": 3
+        },
+        {
+          "name": "字符串数字",
+          "input": "5",
+          "expected": 5
+        },
+        {
+          "name": "小于1",
+          "input": 0,
+          "expected": 3
+        },
+        {
+          "name": "过大值",
+          "input": 15,
+          "expected": 10
+        },
+        {
+          "name": "无效值",
+          "input": "xyz",
+          "expected": 3
+        }
+      ]
+    },
+    {
+      "category": "filename",
+      "description": "文件名验证测试",
+      "cases": [
+        {
+          "name": "有效文件名",
+          "input": "document.txt",
+          "expected": true
+        },
+        {
+          "name": "含空格",
+          "input": "my file.txt",
+          "expected": true
+        },
+        {
+          "name": "含非法字符<",
+          "input": "file<name.txt",
+          "expected": false
+        },
+        {
+          "name": "含非法字符>",
+          "input": "file>name.txt",
+          "expected": false
+        },
+        {
+          "name": "含非法字符:",
+          "input": "file:name.txt",
+          "expected": false
+        },
+        {
+          "name": "含非法字符|",
+          "input": "file|name.txt",
+          "expected": false
+        },
+        {
+          "name": "空文件名",
+          "input": "",
+          "expected": false
+        }
+      ]
+    },
+    {
+      "category": "protected_file",
+      "description": "受保护文件检查测试",
+      "cases": [
+        {
+          "name": "受保护文件",
+          "input": ".do_not_touch.cfg",
+          "expected": true
+        },
+        {
+          "name": "普通文件",
+          "input": "document.txt",
+          "expected": false
+        },
+        {
+          "name": "类似名称",
+          "input": "do_not_touch.cfg",
+          "expected": false
+        }
+      ]
+    }
+  ]
+}

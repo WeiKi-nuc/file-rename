@@ -1,0 +1,115 @@
+{
+  "description": "基础测试场景 - 测试核心重命名功能",
+  "scenarios": [
+    {
+      "name": "添加前缀",
+      "description": "测试添加前缀功能",
+      "create_files": ["file1.txt", "file2.txt", "file3.txt"],
+      "rule": {
+        "prefix": "TEST_",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "file1.txt": "TEST_file1.txt",
+        "file2.txt": "TEST_file2.txt",
+        "file3.txt": "TEST_file3.txt"
+      }
+    },
+    {
+      "name": "添加后缀",
+      "description": "测试添加后缀功能（在扩展名前）",
+      "create_files": ["document.txt", "image.jpg", "data.csv"],
+      "rule": {
+        "prefix": "",
+        "suffix": "_backup",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "document.txt": "document_backup.txt",
+        "image.jpg": "image_backup.jpg",
+        "data.csv": "data_backup.csv"
+      }
+    },
+    {
+      "name": "简单字符串替换",
+      "description": "测试简单的字符串替换功能",
+      "create_files": ["old_name_1.txt", "old_name_2.txt", "old_name_3.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": "old_name,new_name",
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "old_name_1.txt": "new_name_1.txt",
+        "old_name_2.txt": "new_name_2.txt",
+        "old_name_3.txt": "new_name_3.txt"
+      }
+    },
+    {
+      "name": "序号递增",
+      "description": "测试序号递增生成功能",
+      "create_files": ["doc.txt", "doc.txt", "doc.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "doc.txt": "001_doc.txt"
+      }
+    },
+    {
+      "name": "序号起始值",
+      "description": "测试不同的序号起始值",
+      "create_files": ["a.txt", "b.txt", "c.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": 10,
+        "padding": 2,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "a.txt": "10_a.txt",
+        "b.txt": "11_b.txt",
+        "c.txt": "12_c.txt"
+      }
+    },
+    {
+      "name": "补零位数",
+      "description": "测试不同的补零位数",
+      "create_files": ["file.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": 5,
+        "padding": 5,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "file.txt": "00005_file.txt"
+      }
+    }
+  ]
+}
