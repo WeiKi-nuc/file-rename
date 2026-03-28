@@ -1,0 +1,19 @@
+{
+    "name": "复杂场景 - 特殊字符处理",
+    "description": "测试文件名中的特殊字符处理",
+    "scenario_type": "complex",
+    "test_files": [
+        "file with spaces.txt",
+        "file<with>brackets.txt",
+        "file:with:colons.txt"
+    ],
+    "rule": {
+        "prefix": "safe_"
+    },
+    "expected_results": {
+        "file with spaces.txt": "safe_file with spaces.txt",
+        "file<with>brackets.txt": "safe_file_with_brackets.txt",
+        "file:with:colons.txt": "safe_file_with_colons.txt"
+    },
+    "notes": "非法字符会被替换为下划线"
+}

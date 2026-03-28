@@ -1,0 +1,29 @@
+{
+  "test_id": "20260328_235642_485293",
+  "timestamp": "2026-03-28T23:56:42.485293",
+  "test_type": "rule",
+  "success": true,
+  "duration_ms": 0.0,
+  "request": {
+    "prefix": "test_",
+    "suffix": "_backup",
+    "replace": null,
+    "number_start": 1,
+    "padding": 3,
+    "date_format": null,
+    "regex": null,
+    "test_filenames": [
+      "file1.txt",
+      "file2.jpg",
+      "document.pdf"
+    ]
+  },
+  "response": {
+    "mapping": {
+      "file1.txt": "001_test_file1_backup.txt",
+      "file2.jpg": "002_test_file2_backup.jpg",
+      "document.pdf": "003_test_document_backup.pdf"
+    }
+  },
+  "errors": []
+}

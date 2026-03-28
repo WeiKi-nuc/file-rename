@@ -1,0 +1,18 @@
+{
+    "name": "边界场景 - 无匹配扩展名",
+    "description": "测试扩展名过滤无匹配的情况",
+    "scenario_type": "boundary",
+    "test_files": [
+        "document.txt",
+        "photo.jpg",
+        "data.csv"
+    ],
+    "rule": {
+        "prefix": "test_"
+    },
+    "extensions": [".pdf", ".docx"],
+    "expected_results": {
+        "files_found": 0,
+        "message": "未找到匹配扩展名的文件"
+    }
+}

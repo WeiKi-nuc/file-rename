@@ -1,0 +1,18 @@
+{
+    "name": "基础场景 - 序号格式化",
+    "description": "测试序号递增和补零功能",
+    "scenario_type": "basic",
+    "test_files": [
+        "image.png",
+        "image.png",
+        "image.png"
+    ],
+    "rule": {
+        "prefix": "IMG_",
+        "number_start": 1,
+        "padding": 4
+    },
+    "expected_results": {
+        "image.png": "0001_IMG_image.png"
+    }
+}

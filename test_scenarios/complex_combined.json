@@ -1,0 +1,22 @@
+{
+    "name": "复杂场景 - 组合规则",
+    "description": "测试多种规则组合使用",
+    "scenario_type": "complex",
+    "test_files": [
+        "photo_001.jpg",
+        "photo_002.jpg",
+        "photo_003.jpg"
+    ],
+    "rule": {
+        "prefix": "IMG_",
+        "suffix": "_2025",
+        "replace": "photo,picture",
+        "number_start": 1,
+        "padding": 4
+    },
+    "expected_results": {
+        "photo_001.jpg": "0001_IMG_picture_001_2025.jpg",
+        "photo_002.jpg": "0002_IMG_picture_002_2025.jpg",
+        "photo_003.jpg": "0003_IMG_picture_003_2025.jpg"
+    }
+}

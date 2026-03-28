@@ -1,0 +1,16 @@
+{
+    "name": "边界场景 - 受保护文件",
+    "description": "测试访问受保护文件的情况",
+    "scenario_type": "boundary",
+    "test_files": [
+        ".do_not_touch.cfg",
+        "normal_file.txt"
+    ],
+    "rule": {
+        "prefix": "test_"
+    },
+    "expected_results": {
+        "protected_file_skipped": true,
+        "protected_file": ".do_not_touch.cfg"
+    }
+}

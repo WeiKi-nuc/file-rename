@@ -1,0 +1,18 @@
+{
+    "name": "基础场景 - 字符串替换",
+    "description": "测试字符串替换功能",
+    "scenario_type": "basic",
+    "test_files": [
+        "old_document.txt",
+        "old_photo.jpg",
+        "old_data.csv"
+    ],
+    "rule": {
+        "replace": "old,new"
+    },
+    "expected_results": {
+        "old_document.txt": "new_document.txt",
+        "old_photo.jpg": "new_photo.jpg",
+        "old_data.csv": "new_data.csv"
+    }
+}

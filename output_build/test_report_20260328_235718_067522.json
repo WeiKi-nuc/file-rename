@@ -1,0 +1,23 @@
+{
+  "test_id": "20260328_235718_067522",
+  "timestamp": "2026-03-28T23:57:18.067522",
+  "test_type": "engine",
+  "success": true,
+  "duration_ms": 2.057790756225586,
+  "request": {
+    "extensions": null,
+    "prefix": "IMG_",
+    "suffix": "",
+    "replace": null,
+    "number_start": 1,
+    "padding": 4,
+    "date_format": null,
+    "regex": null
+  },
+  "response": {
+    "files_found": 3,
+    "rename_count": 3,
+    "conflict_count": 0
+  },
+  "errors": []
+}
