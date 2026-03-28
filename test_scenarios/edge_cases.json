@@ -1,0 +1,140 @@
+{
+  "description": "边界测试场景 - 测试异常情况和边界条件",
+  "scenarios": [
+    {
+      "name": "空目录",
+      "description": "测试空目录情况",
+      "create_files": [],
+      "rule": {
+        "prefix": "TEST_",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {}
+    },
+    {
+      "name": "无匹配扩展名",
+      "description": "测试过滤后无匹配文件的情况",
+      "create_files": ["file.txt", "doc.txt", "data.txt"],
+      "extensions": ".jpg,.png",
+      "rule": {
+        "prefix": "IMG_",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {}
+    },
+    {
+      "name": "文件名冲突",
+      "description": "测试重命名后产生冲突的情况",
+      "create_files": ["file_a.txt", "file_b.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": "_a,_conflict",
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_conflicts": true
+    },
+    {
+      "name": "相同文件名",
+      "description": "测试重命名为相同文件名的情况",
+      "create_files": ["test.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": -1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "test.txt": "test.txt"
+      }
+    },
+    {
+      "name": "特殊字符文件名",
+      "description": "测试包含特殊字符的文件名",
+      "create_files": ["file with spaces.txt", "file-with-dashes.txt", "file_with_underscores.txt"],
+      "rule": {
+        "prefix": "TEST_",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "file with spaces.txt": "TEST_file with spaces.txt",
+        "file-with-dashes.txt": "TEST_file-with-dashes.txt",
+        "file_with_underscores.txt": "TEST_file_with_underscores.txt"
+      }
+    },
+    {
+      "name": "无扩展名文件",
+      "description": "测试无扩展名的文件",
+      "create_files": ["README", "LICENSE", "Makefile"],
+      "rule": {
+        "prefix": "doc_",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "README": "doc_001_README",
+        "LICENSE": "doc_002_LICENSE",
+        "Makefile": "doc_003_Makefile"
+      }
+    },
+    {
+      "name": "多点文件名",
+      "description": "测试包含多个点的文件名",
+      "create_files": ["archive.tar.gz", "backup.2024.01.01.zip", "file.name.with.dots.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "_bak",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "archive.tar.gz": "archive.tar_bak.gz",
+        "backup.2024.01.01.zip": "backup.2024.01.01_bak.zip",
+        "file.name.with.dots.txt": "file.name.with.dots_bak.txt"
+      }
+    },
+    {
+      "name": "超长文件名",
+      "description": "测试超长文件名处理",
+      "create_files": ["this_is_a_very_long_filename_that_might_cause_issues_in_some_systems_but_should_be_handled_properly.txt"],
+      "rule": {
+        "prefix": "PRE_",
+        "suffix": "",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_prefix": "PRE_"
+    }
+  ]
+}

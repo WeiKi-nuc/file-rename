@@ -1,0 +1,169 @@
+{
+  "description": "复杂测试场景 - 测试组合规则和高级功能",
+  "scenarios": [
+    {
+      "name": "组合规则-前缀后缀序号",
+      "description": "测试前缀、后缀和序号的组合",
+      "create_files": ["image.jpg", "photo.png", "pic.gif"],
+      "rule": {
+        "prefix": "IMG_",
+        "suffix": "_2025",
+        "replace": null,
+        "number_start": 1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "image.jpg": "001_IMG_image_2025.jpg",
+        "photo.png": "002_IMG_photo_2025.png",
+        "pic.gif": "003_IMG_pic_2025.gif"
+      }
+    },
+    {
+      "name": "组合规则-替换和序号",
+      "description": "测试字符串替换和序号的组合",
+      "create_files": ["old_doc_1.txt", "old_doc_2.txt", "old_doc_3.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": "old_doc,new_doc",
+        "number_start": 10,
+        "padding": 2,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "old_doc_1.txt": "10_new_doc_1.txt",
+        "old_doc_2.txt": "11_new_doc_2.txt",
+        "old_doc_3.txt": "12_new_doc_3.txt"
+      }
+    },
+    {
+      "name": "正则替换-版本号",
+      "description": "使用正则表达式替换版本号",
+      "create_files": ["file_v1.txt", "file_v2.txt", "file_v12.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": -1,
+        "padding": 3,
+        "date_format": null,
+        "regex": "_v(\\d+),_version$1"
+      },
+      "expected_mapping": {
+        "file_v1.txt": "file_version1.txt",
+        "file_v2.txt": "file_version2.txt",
+        "file_v12.txt": "file_version12.txt"
+      }
+    },
+    {
+      "name": "正则替换-日期格式",
+      "description": "使用正则表达式处理日期格式",
+      "create_files": ["report_2024_01_15.pdf", "data_2024_03_20.csv"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": -1,
+        "padding": 3,
+        "date_format": null,
+        "regex": "_(\\d{4})_(\\d{2})_(\\d{2}),_$1-$2-$3"
+      },
+      "expected_mapping": {
+        "report_2024_01_15.pdf": "report_2024-01-15.pdf",
+        "data_2024_03_20.csv": "data_2024-03-20.csv"
+      }
+    },
+    {
+      "name": "正则替换-移除数字",
+      "description": "使用正则表达式移除文件名中的数字",
+      "create_files": ["file123.txt", "doc456.pdf", "image789.jpg"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": -1,
+        "padding": 3,
+        "date_format": null,
+        "regex": "\\d+,"
+      },
+      "expected_mapping": {
+        "file123.txt": "file.txt",
+        "doc456.pdf": "doc.pdf",
+        "image789.jpg": "image.jpg"
+      }
+    },
+    {
+      "name": "日期插入",
+      "description": "测试日期插入功能（使用文件修改时间）",
+      "create_files": ["document.txt", "report.pdf"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": -1,
+        "padding": 3,
+        "date_format": "%Y%m%d",
+        "regex": null
+      },
+      "expected_contains": ["document_", "report_"]
+    },
+    {
+      "name": "全功能组合",
+      "description": "测试所有功能的组合使用",
+      "create_files": ["temp_file_v1.txt", "temp_file_v2.txt"],
+      "rule": {
+        "prefix": "FINAL_",
+        "suffix": "_done",
+        "replace": "temp_,",
+        "number_start": 100,
+        "padding": 4,
+        "date_format": null,
+        "regex": "_v(\\d+),_$1"
+      },
+      "expected_mapping": {
+        "temp_file_v1.txt": "0100_FINAL_file_1_done.txt",
+        "temp_file_v2.txt": "0101_FINAL_file_2_done.txt"
+      }
+    },
+    {
+      "name": "大小写敏感替换",
+      "description": "测试大小写敏感的字符串替换",
+      "create_files": ["File.TXT", "FILE.txt", "file.TXT"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": "File,Document",
+        "number_start": -1,
+        "padding": 3,
+        "date_format": null,
+        "regex": null
+      },
+      "expected_mapping": {
+        "File.TXT": "Document.TXT",
+        "FILE.txt": "FILE.txt",
+        "file.TXT": "file.TXT"
+      }
+    },
+    {
+      "name": "正则分组替换",
+      "description": "测试正则表达式分组替换",
+      "create_files": ["user_john_doe.txt", "user_jane_smith.txt"],
+      "rule": {
+        "prefix": "",
+        "suffix": "",
+        "replace": null,
+        "number_start": -1,
+        "padding": 3,
+        "date_format": null,
+        "regex": "user_(\\w+)_(\\w+),$2_$1"
+      },
+      "expected_mapping": {
+        "user_john_doe.txt": "doe_john.txt",
+        "user_jane_smith.txt": "smith_jane.txt"
+      }
+    }
+  ]
+}

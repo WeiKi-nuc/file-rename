@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-03-29T00:00:40.835038",
+  "total_tests": 1,
+  "passed": 1,
+  "failed": 0,
+  "results": [
+    {
+      "scenario_name": "快速测试",
+      "success": true,
+      "message": "场景 '快速测试' 通过",
+      "files_created": [
+        "test1.txt",
+        "test2.txt"
+      ],
+      "rename_mapping": {
+        "test1.txt": "01_NEW_test1.txt",
+        "test2.txt": "02_NEW_test2.txt"
+      },
+      "actual_results": {
+        "test1.txt": {
+          "success": true,
+          "new_name": "01_NEW_test1.txt",
+          "error": null
+        },
+        "test2.txt": {
+          "success": true,
+          "new_name": "02_NEW_test2.txt",
+          "error": null
+        }
+      },
+      "errors": []
+    }
+  ]
+}
